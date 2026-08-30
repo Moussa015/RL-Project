@@ -1,8 +1,11 @@
 """Rejeu d'un agent sauvegardé, sans réentraînement.
 
-Usage :
-    python play.py --model models/cartpole_qlearning_bins12_seed0.npz
-    python play.py --model models/mountaincar_qlearning_bins24_seed0.npz --episodes 5
+Écran unique (tous les scénarios) :
+    python play.py
+
+Commande exigée par le sujet (un modèle précis) :
+    python play.py --model models/cartpole_best.npz
+    python play.py --model models/mountaincar_best.npz --episodes 5
 """
 
 from __future__ import annotations
@@ -81,14 +84,25 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Rejouer un agent tabulaire sauvegardé")
     p.add_argument(
         "--model",
-        default="models/cartpole_best.npz",
-        help="Chemin vers le fichier .npz (défaut : CartPole entraîné)",
+        default=None,
+        help="Fichier .npz : mode ligne de commande (exigence du sujet). "
+        "Sans cet argument, ouvre l'écran unique de démonstration.",
     )
     p.add_argument("--episodes", type=int, default=5)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--no-render", action="store_true")
+    p.add_argument("--gui", action="store_true", help="Forcer l'écran unique")
     args = p.parse_args()
-    play(Path(args.model), args.episodes, args.seed, render=not args.no_render)
+
+    use_gui = args.gui or (args.model is None and not args.no_render)
+    if use_gui:
+        from src.demo_gui import run_gui
+
+        run_gui(seed=args.seed)
+        return
+
+    model = Path(args.model or "models/cartpole_best.npz")
+    play(model, args.episodes, args.seed, render=not args.no_render)
 
 
 if __name__ == "__main__":

@@ -53,6 +53,16 @@ Graines utilisées : `0 1 2 3 4`. Grilles : `6, 12, 24` intervalles par dimensio
 
 ## 4. Rejouer un agent (sans réentraînement)
 
+Écran unique (CartPole / MountainCar, aléatoire / Q-learning / SARSA) :
+
+```bash
+python play.py
+```
+
+Clic sur un bouton pour changer de scénario. Espace = pause, R = nouvel épisode, Esc = quitter.
+
+La commande exigée par le sujet reste disponible :
+
 ```bash
 python play.py --model models/cartpole_best.npz
 python play.py --model models/mountaincar_best.npz --episodes 5
