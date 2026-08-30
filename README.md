@@ -27,7 +27,7 @@ models/              # Q-tables (.npz pour rejouer, .npy des meilleurs agents)
 results/             # métriques JSON + tableau récapitulatif
 figures/             # courbes et captures
 videos/              # démonstration mp4
-rapport/             # rapport DOCX et PDF
+rapport/             # rapport DOCX
 ```
 
 ## 3. Reproduire les expériences du rapport
