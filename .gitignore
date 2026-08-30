@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+pdf_extract.txt
+assets/word/
+*.tmp
+~$*
+.DS_Store
+Thumbs.db
+
+# Sujet / exemplaires (fichiers fournis, pas le livrable)
+Projets_RL_2025_2026_VF.pdf
+binome_trinome_IA_M2 (1).docx
+page de garde exmplaire.docx
